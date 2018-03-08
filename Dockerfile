@@ -63,6 +63,7 @@ RUN sed -i "49s|$| --no-sandbox|" /opt/google/chrome/google-chrome
 RUN touch startup.sh
 RUN echo "#!/bin/sh" >> startup.sh
 RUN echo "pipenv --python 3.6" >> startup.sh
+RUN echo "cd pyroute/" >> startup.sh
 RUN echo "pipenv install --system" >> startup.sh
 RUN echo "pipenv install --dev" >> startup.sh
 RUN echo "export LC_ALL=C.UTF-8" >> startup.sh
@@ -74,4 +75,7 @@ RUN chmod +x startup.sh
 
 # Deleting unnecesary files
 RUN rm /root/pyroute/magic-cookie
+
+# Starting up the virtual environment of pyroute
+ENTRYPOINT ["./startup.sh"]
 
