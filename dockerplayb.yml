@@ -1,0 +1,13 @@
+---
+
+- name: pull an image
+  hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+    - name: Getting vahev pyroute image
+      become: true
+      docker_container:
+        name: averquepex
+        image: vahev/pyroute:lts
+        command: ./startup.sh
