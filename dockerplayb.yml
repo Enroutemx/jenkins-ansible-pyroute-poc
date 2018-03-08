@@ -8,6 +8,6 @@
     - name: Getting vahev pyroute image
       become: true
       docker_container:
-        name: averquepex
+        name: Setting up and running the container.
         image: vahev/pyroute:lts
         command: ./startup.sh
