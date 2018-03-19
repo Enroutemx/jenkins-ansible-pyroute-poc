@@ -5,9 +5,21 @@
   connection: local
   become: yes
   tasks:
-    - name: Getting vahev pyroute image
+    - name: Set selenium server on
       become: true
       docker_container:
-        name: Setting up and running the container.
-        image: vahev/pyroute:lts
-        command: ./startup.sh
+        name: sel_server
+        detach: true
+        ports: "4444:4444"
+        image: selenium/standalone-firefox:3.10.0-argon
+        state: started
+
+    - name: Set up of the mariobd7/prueba_1:latest image
+      become: true
+      docker_container:
+        name: ansible_container
+        tty: true
+        network_mode: host
+        volumes: /tmp/.X11-unix
+        expose: DISPLAY
+        image: mariobd7/prueba_5:first
