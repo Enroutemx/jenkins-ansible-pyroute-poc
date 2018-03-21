@@ -14,7 +14,7 @@
         image: selenium/standalone-firefox:3.10.0-argon
         state: started
 
-    - name: Set up of the mariobd7/prueba_1:latest image
+    - name: Set up of the mariobd7/prueba_5:latest image
       become: true
       docker_container:
         name: ansible_container
@@ -23,3 +23,4 @@
         volumes: /tmp/.X11-unix
         expose: DISPLAY
         image: mariobd7/prueba_5:first
+        state: started
