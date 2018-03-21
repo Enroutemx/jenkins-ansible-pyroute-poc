@@ -20,13 +20,29 @@ sudo java -jar jenkins.war --httpPort=8080
 ```
 This command make jenkins server go up and running. The address to start the set up is `localhost:8080`
 
+```
+docker pull mariobd7/prueba_5:first
+``` 
+With this command we download the image used by ansible
+
+```
+docker pull selenium/standalone-firefox:3.10.0-argon
+```
+
+This line allow us to download of the selenium server stand-alone.
+
+Ideally, one could run the ansible playbook with the following line:
+
+```
+ansible-playbook dockerplayb.yml --extra-vars "ansible_sudo_pass=YOUR_ACTUAL_PASSWORD"
+```
+and then excute:
+
+```
+docker exec -ti ansible_container pyroute run
+```
+
+This should be enough in order to perform a basic test on a file already in place. One thing to improve.
+
 ### Set up of Jenkins
-Make sure you have the Ansible, docker and git pluggins.
-IMAGES and EXAMPLES ARE COMING
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Make sure you have the ansible, docker and git plugins.
